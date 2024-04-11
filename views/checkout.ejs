@@ -1,0 +1,213 @@
+<!-- views/checkout.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa; /* Light gray background */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #424242; /* Dark gray for text */
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background-color: #f4ecd8; /* Cream background */
+        border-radius: 8px;
+        padding: 40px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 600px;
+        margin: 20px auto;
+      }
+
+      h1 {
+        color: #3c393d; /* Dark gray color */
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #555;
+      }
+
+      .total {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #3c393d; /* Dark gray color */
+      }
+
+      .checkout-form {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff; /* White background */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+        width: 100%; /* Ensure the form group takes full width */
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #3c393d; /* Dark gray color */
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        background-color: #00798c; /* Teal color */
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #005a65; /* Darker shade of teal on hover */
+      }
+
+      .continue-shopping {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #00798c; /* Teal color */
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .continue-shopping:hover {
+        background-color: #005a65; /* Darker shade of teal on hover */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Checkout</h1>
+      <form action="/completePurchase" method="post" class="checkout-form">
+        <!-- Existing form fields for card information -->
+
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea
+            id="address"
+            name="address"
+            placeholder="Enter your address"
+            rows="4"
+            cols="45"
+            required
+          ></textarea>
+        </div>
+      </form>
+
+      <% if (cart.length > 0) { %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cart.forEach(item => { %>
+          <tr>
+            <td><%= item.product.name %></td>
+            <td><%= item.quantity %></td>
+            <td>$<%= item.product.price.toFixed(2) %></td>
+            <td>$<%= (item.quantity * item.product.price).toFixed(2) %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+
+      <p class="total">Total: $<%= total.toFixed(2) %></p>
+
+      <form action="/completePurchase" method="post" class="checkout-form">
+        <!-- Add any additional form fields or payment processing logic here -->
+
+        <div class="form-group">
+          <label for="cardNumber">Card Number:</label>
+          <input
+            type="text"
+            id="cardNumber"
+            name="cardNumber"
+            placeholder="Enter your card number"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="expiryDate">Expiry Date:</label>
+          <input
+            type="month"
+            id="expiryDate"
+            name="expiryDate"
+            placeholder="MM/YYYY"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="cvv">CVV:</label>
+          <input
+            type="password"
+            id="cvv"
+            name="cvv"
+            placeholder="Enter CVV"
+            required
+          />
+        </div>
+
+        <button type="submit">Complete Purchase</button>
+      </form>
+
+      <a href="/" class="continue-shopping">Continue Shopping</a>
+      <% } else { %>
+      <p>Your cart is empty. Add items to your cart before checking out.</p>
+      <a href="/" class="continue-shopping">Continue Shopping</a>
+      <% } %>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!-- views/cart.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f8f9fa; /* Light gray background */
+          color: #424242; /* Dark gray for text */
+        }
+  
+        header {
+          background-color: #00798c; /* Dark green */
+          padding: 15px 0;
+        }
+  
+        nav {
+          background-color: #00798c; /* Teal color */
+          color: #fff;
+        }
+  
+        nav a {
+          color: #fff;
+          text-decoration: none;
+          margin-right: 20px;
+        }
+  
+        .center {
+          justify-content: center;
+          display: flex;
+        }
+  
+        .logo a {
+          text-decoration: none;
+          color: #fff;
+          font-weight: bold;
+          font-size: 16px;
+        }
+  
+        .right-menu {
+          margin-left: auto;
+        }
+  
+        .right-menu a {
+          text-decoration: none;
+          color: #f0a6ca; /* Light pink color */
+          font-weight: bold;
+          font-size: 16px;
+          margin-left: 20px;
+        }
+  
+        .right-menu a:hover {
+          border-bottom: 2px solid #fff;
+        }
+  
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+          background-color: #f8f9fa; /* Light gray background */
+          color: #424242; /* Dark gray for text */
+        }
+  
+        h1 {
+          text-align: center;
+          color: #333; /* Dark gray for headings */
+        }
+  
+        ul {
+          list-style-type: none;
+          padding: 0;
+        }
+  
+        li {
+          margin-bottom: 20px;
+          padding: 15px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s;
+          background-color: #fff; /* White background */
+        }
+  
+        li:hover {
+          transform: scale(1.02);
+        }
+  
+        img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+  
+        p {
+          margin: 10px 0;
+          color: #555;
+        }
+  
+        .total {
+          font-weight: bold;
+          font-size: 18px;
+          color: #3c393d; /* Dark gray color */
+        }
+  
+        .empty-cart {
+          text-align: center;
+          font-size: 18px;
+          color: #555;
+        }
+  
+        .checkout-btn {
+          display: block;
+          margin-top: 20px;
+          padding: 10px;
+          background-color: #3c393d; /* Dark gray color */
+          color: #fff;
+          text-align: center;
+          text-decoration: none;
+          border-radius: 4px;
+          transition: background-color 0.3s;
+        }
+  
+        .checkout-btn:hover {
+          background-color: #005c66; /* Updated hover color */
+        }
+  
+        .checkout-btn {
+          display: block;
+          margin-top: 20px;
+          padding: 10px;
+          background-color: #00798c; /* Teal color */
+          color: #fff;
+          text-align: center;
+          text-decoration: none;
+          border-radius: 4px;
+          transition: background-color 0.3s;
+        }
+      </style>
+</head>
+
+<body>
+    <h1>Shopping Cart</h1>
+    <% if (cart.length> 0) { %>
+        <ul>
+            <% cart.forEach(item=> { %>
+                <li>
+                    <h3>
+                        <%= item.product.name %>
+                    </h3>
+                    <img src="<%= item.product.image %>" alt="<%= item.product.name %> Image" width="100">
+                    <p>Quantity: <%= item.quantity %>
+                    </p>
+                    <p>Price: $<%= item.product.price %>
+                    </p>
+                </li>
+                <% }); %>
+        </ul>
+        <p class="total">Total: $<%= total %>
+        </p>
+        <a href="/checkout" class="checkout-btn">Proceed to Checkout</a>
+        <% } else { %>
+            <p class="empty-cart">Your shopping cart is empty.</p>
+            <% } %>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!-- views/aboutUs.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa; /* Light gray background */
+        color: #424242; /* Dark gray for text */
+      }
+
+      header {
+        background-color: #1a936f; /* Dark green */
+        padding: 15px 0;
+      }
+
+      nav {
+        background-color: #1a936f; /* Dark green */
+        color: #fff;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+
+      .center {
+        justify-content: center;
+        display: flex;
+      }
+
+      .logo a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .right-menu {
+        margin-left: auto;
+      }
+
+      .right-menu a {
+        text-decoration: none;
+        color: #f0a6ca; /* Light pink color */
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: 20px;
+      }
+
+      .right-menu a:hover {
+        border-bottom: 2px solid #fff;
+      }
+      main {
+        margin: 20px; /* Add margin to the main element */
+        padding: 20px; /* Add padding to the main element */
+      }
+
+      h1 {
+        text-align: center;
+        font-style: italic;
+        color: #333; /* Dark gray for headings */
+      }
+
+      p {
+        text-align: justify;
+        line-height: 1.6;
+        color: #555;
+      }
+
+      footer {
+        background-color: #1a936f; /* Dark green */
+        color: #ddd;
+        padding: 15px 0;
+        text-align: center;
+        bottom: 0;
+        width: 100%;
+      }
+
+      footer p {
+        color: #989181;
+      }
+
+      .team-members {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+      }
+
+      .team-member {
+        text-align: center;
+        width: 200px; /* Adjust the width as needed */
+        margin: 10px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .team-member img {
+        width: 100%; /* Make the images fill the container */
+        border-radius: 50%;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .team-member h3 {
+        margin-top: 10px;
+        color: #3c393d;
+      }
+
+      .team-member p {
+        color: #555;
+      }
+
+      .team-member:hover {
+        transform: scale(1.1); /* Add a slight scale effect on hover */
+      }
+
+      .team-member:hover img {
+        filter: brightness(80%); /* Reduce brightness on hover */
+      }
+
+      .team-members {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap; /* Allow wrapping to the next line */
+        margin-top: 30px;
+      }
+
+      .team-member img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        transition: transform 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="center">
+          <div class="logo">
+            <h1>Shopping Sphere</h1>
+          </div>
+          <div class="right-menu">
+            <a href="/cart">Cart</a>
+            <a href="/about-us">About Us</a>
+            <a href="/contact-us">Contact Us</a>
+            <a href="/logout">Logout</a>
+            <!-- <a href="/favorites">Favorites</a> -->
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1 style="color: #3c393d">About Us</h1>
+      <p>
+        Welcome to Shopping Sphere! We are your go-to online shopping
+        destination for affordable and high-quality products. Our mission is to
+        provide a seamless shopping experience, offering a wide range of
+        products at unbeatable prices.
+      </p>
+      <p>
+        At Shopping Sphere, we value our customers and strive to exceed their
+        expectations. Our dedicated team works hard to curate a diverse
+        selection of products, ensuring there's something for everyone. Whether
+        you're looking for the latest tech gadgets, fashion trends, or home
+        essentials, we've got you covered.
+      </p>
+      <p>Thank you for choosing Shopping Sphere. Happy shopping!</p>
+      <h2 style="color: #3c393d">Meet Our Team</h2>
+      <section style="margin-top: 30px" class="team-members">
+        <!-- Team Member 1 -->
+        <div class="team-member">
+          <img src="/images/arrchie.jpeg" alt="Team Member 1" />
+          <h3>Archie</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Repellendus, nam!
+          </p>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-member">
+          <img src="/images/anu.jpeg" alt="Team Member 2" />
+          <h3>Anushruti Singh</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Recusandae, vero.
+          </p>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-member">
+          <img src="/images/prabal.jpeg" alt="Team Member 3" />
+          <h3>Prabal Soni</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, sit!
+          </p>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-member">
+          <img src="/images/khushi.jpeg" alt="Team Member 4" />
+          <h3>Khushi Sharma</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit,
+            cupiditate.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p style="color: #ddd">
+        &copy; 2024 Shopping Sphere. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
